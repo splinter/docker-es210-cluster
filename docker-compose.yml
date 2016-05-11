@@ -1,0 +1,12 @@
+is:
+  build: ./sp-wso2es-is
+  ports:
+       - "9443:9443"
+  links:
+       - espub1
+
+espub1:
+  build: ./sp-wso2es210
+  ports:
+       - "9448:9448"
+
