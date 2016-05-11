@@ -15,4 +15,11 @@ db:
    environment: 
              MYSQL_ROOT_PASSWORD: root
    ports:
-        - "5000:5000"
+        - "3306:3306"
+
+pub1:
+   build: publisher
+   ports:
+       - "9443"
+   links:
+      - db
