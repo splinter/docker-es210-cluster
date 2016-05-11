@@ -1,12 +1,18 @@
-is:
-  build: ./sp-wso2es-is
-  ports:
-       - "9443:9443"
-  links:
-       - espub1
+#is:
+#  build: ./sp-wso2es-is
+#  ports:
+#       - "9443:9443"
 
-espub1:
-  build: ./sp-wso2es210
-  ports:
-       - "9448:9448"
+#espub1:
+#  build: ./sp-wso2es210
+#  ports:
+#       - "9448:9448"
+#  links:
+#       - is
 
+db:
+   build: sp-mysql
+   environment: 
+             MYSQL_ROOT_PASSWORD: root
+   ports:
+        - "5000:5000"
