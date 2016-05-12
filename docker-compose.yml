@@ -19,6 +19,12 @@ db:
 
 pub1:
    build: publisher
+   environment:
+            WSO2_LOCAL_MEMBER_HOST: pub1
+            WSO2_LOCAL_MEMBER_PORT: 4000
+            WSO2_WK_MEMBER_HOST: pub1
+            WSO2_CARBON_HOST: publisher.es-wso2.com
+   container_name: pub1
    ports:
        - "9443"
    links:

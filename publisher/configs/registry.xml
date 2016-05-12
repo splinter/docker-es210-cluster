@@ -35,7 +35,7 @@
         <readOnly>false</readOnly>
         <enableCache>true</enableCache>
         <registryRoot>/</registryRoot>
-        <cacheId>root@jdbc:mysql://xxx.xxx.xx.xx:3306/ES_regdb?autoReconnect=true</cacheId>
+        <cacheId>root@jdbc:mysql://db:3306/ES_regdb?autoReconnect=true</cacheId>
     </remoteInstance>
     <mount overwrite="true" path="/_system/config">
         <instanceId>instanceid</instanceId>

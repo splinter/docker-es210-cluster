@@ -28,7 +28,7 @@
 		</jndiConfig>
 		<definition type="RDBMS">
 			<configuration>
-				<url>jdbc:mysql://xxx.xxx.xx.xx:3306/ES_Socialdb</url>
+				<url>jdbc:mysql://db:3306/ES_Socialdb</url>
 				<username>root</username>
 				<password>root</password>
 				<driverClassName>com.mysql.jdbc.Driver</driverClassName>
