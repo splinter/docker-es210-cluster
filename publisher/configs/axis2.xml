@@ -705,7 +705,7 @@
         <members>
             <member>
                 <hostName>xxx.xxx.xx</hostName>
-                <port>4254</port>
+                <port>xxxx</port>
             </member>
         </members>
 

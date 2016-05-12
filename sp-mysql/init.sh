@@ -1,6 +1,8 @@
-#cd /wso2home/dbscripts
+# Change the MAX CONNECTIONs
+mysql -u root "-proot" -e "set global max_connections = 1000;"
+echo "Setting max connections to 1000"
+mysql -u root "-proot" -e "show variables like 'max_connections'"
 
-#mysql -u root "-proot" -e "show databases;"
 
 mysql -u root "-proot" -e "create database ES_carbondb; \
 use ES_carbondb; \
@@ -31,3 +33,9 @@ mysql -u root "-proot" -e "create database ES_umdb; \
 use ES_umdb; \
 source /wso2home/dbscripts/mysql.sql; \
 grant all on ES_umdb.* TO root@'xxx.xxx.xx.xx' identified by 'root';"
+
+
+#Debugging
+echo "Completed executing the start up script"
+mysql -u root "-proot" -e "show variables like 'max_connections'"
+

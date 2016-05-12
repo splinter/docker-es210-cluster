@@ -12,20 +12,41 @@
 
 db:
    build: sp-mysql
+   container_name: db
    environment: 
              MYSQL_ROOT_PASSWORD: root
    ports:
         - "3306:3306"
 
-pub1:
+es_pub1:
    build: publisher
    environment:
-            WSO2_LOCAL_MEMBER_HOST: pub1
+            WSO2_LOCAL_MEMBER_HOST: es_pub1
             WSO2_LOCAL_MEMBER_PORT: 4000
-            WSO2_WK_MEMBER_HOST: pub1
+            WSO2_WK_MEMBER_HOST: es_pub2
+            WSO2_WK_MEMBER_PORT: 4254
             WSO2_CARBON_HOST: publisher.es-wso2.com
-   container_name: pub1
+   container_name: es_pub1
    ports:
        - "9443"
+       - "4254"
+       - "4000"
    links:
       - db
+
+es_pub2:
+   build: publisher
+   environment:
+            WSO2_LOCAL_MEMBER_HOST: es_pub2
+            WSO2_LOCAL_MEMBER_PORT: 4000
+            WSO2_WK_MEMBER_HOST: es_pub1
+            WSO2_WK_MEMBER_PORT: 4254
+            WSO2_CARBON_HOST: publisher.es-wso2.com
+   container_name: es_pub2
+   ports:
+       - "9443"
+       - "4254"
+       - "4000"
+   links:
+      - db
+      - es_pub1
