@@ -14,6 +14,13 @@ WORKDIR /wso2home/
 RUN unzip wso2es-2.1.0-beta.zip
 RUN rm wso2es-2.1.0-beta.zip
 
+COPY /certs/server.crt ${WSO2_ES_PACK}/repository/resources/security/server.crt
+COPY /certs/server.key ${WSO2_ES_PACK}/repository/resources/security/server.key
+
+WORKDIR /wso2home/${WSO2_ES_PACK}/repository/resources/security/
+RUN keytool -import -alias wso2es -file server.crt -keystore client-truststore.jks -storepass wso2carbon -noprompt
+WORKDIR /wso2home/
+
 COPY /configs/master-datasources.xml /wso2home/${WSO2_ES_PACK}/repository/conf/datasources/master-datasources.xml
 COPY /db-drivers/mysql-connector-java-5.1.38-bin.jar /wso2home/${WSO2_ES_PACK}/repository/components/lib 
 COPY /configs/user-mgt.xml /wso2home/${WSO2_ES_PACK}/repository/conf/user-mgt.xml
