@@ -18,6 +18,16 @@ db:
    ports:
         - "3306:3306"
 
+nginx:
+   build: nginx
+   container_name: nginx
+   ports:
+        - "80:80"
+        - "443:443"
+   links:
+        - es_pub1
+        - es_pub2
+
 es_pub1:
    build: publisher
    environment:
