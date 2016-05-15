@@ -27,6 +27,8 @@ COPY /configs/user-mgt.xml /wso2home/${WSO2_ES_PACK}/repository/conf/user-mgt.xm
 COPY /configs/registry.xml /wso2home/${WSO2_ES_PACK}/repository/conf/registry.xml
 COPY /configs/axis2.xml /wso2home/${WSO2_ES_PACK}/repository/conf/axis2/axis2.xml
 COPY /configs/carbon.xml /wso2home/${WSO2_ES_PACK}/repository/conf/carbon.xml
+COPY /configs/publisher.json /wso2home/${WSO2_ES_PACK}/repository/deployment/server/jaggeryapps/publisher/config/publisher.json
+COPY /configs/publisher.json /wso2home/publisher.json
 
 RUN chmod 700 run.sh
 

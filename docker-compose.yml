@@ -28,6 +28,12 @@ nginx:
         - es_pub1
         - es_pub2
 
+is:
+  build: is
+  container_name: is
+  ports:
+      - "9443"
+
 es_pub1:
    build: publisher
    environment:
@@ -43,6 +49,7 @@ es_pub1:
        - "4000"
    links:
       - db
+      - is
 
 es_pub2:
    build: publisher
@@ -60,3 +67,4 @@ es_pub2:
    links:
       - db
       - es_pub1
+      - is

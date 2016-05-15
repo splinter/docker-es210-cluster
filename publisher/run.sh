@@ -23,5 +23,9 @@ sed -i  "s#<port>xxxx</port>#<port>$WSO2_WK_MEMBER_PORT</port>#" /wso2home/wso2e
 echo "Carbon host name is $WSO2_CARBON_HOST"
 sed -i "s#<HostName>xxx.xxx.xx</HostName>#<HostName>$WSO2_CARBON_HOST</HostName>#" /wso2home/wso2es-2.1.0-beta/repository/conf/carbon.xml
 
+#Update the identityProvider URL
+echo "Identity Provider URL  is $IS_PORT_9443_TCP_ADDR"
+sed -i "s#\"identityProviderURL\": \"https://xxx.xxx.xx/samlsso\"#\"identityProviderURL\": \"https://$IS_PORT_9443_TCP_ADDR:9443/samlsso\"#" /wso2home/wso2es-2.1.0-beta/repository/deployment/server/jaggeryapps/publisher/config/publisher.json
+
 # Start the server
 sh /wso2home/wso2es-2.1.0-beta/bin/wso2server.sh
