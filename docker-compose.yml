@@ -19,7 +19,7 @@ db:
         - "3306:3306"
 
 nginx:
-   build: nginx
+   build: nginx-plus
    container_name: nginx
    ports:
         - "80:80"
@@ -38,15 +38,15 @@ es_pub1:
    build: publisher
    environment:
             WSO2_LOCAL_MEMBER_HOST: es_pub1
-            WSO2_LOCAL_MEMBER_PORT: 4000
+            WSO2_LOCAL_MEMBER_PORT: 4100
             WSO2_WK_MEMBER_HOST: es_pub2
-            WSO2_WK_MEMBER_PORT: 4254
+            WSO2_WK_MEMBER_PORT: 4200
             WSO2_CARBON_HOST: publisher.es-wso2.com
    container_name: es_pub1
    ports:
        - "9443"
-       - "4254"
-       - "4000"
+       - "4200"
+       - "4100"
    links:
       - db
       - is
@@ -55,15 +55,15 @@ es_pub2:
    build: publisher
    environment:
             WSO2_LOCAL_MEMBER_HOST: es_pub2
-            WSO2_LOCAL_MEMBER_PORT: 4000
+            WSO2_LOCAL_MEMBER_PORT: 4200
             WSO2_WK_MEMBER_HOST: es_pub1
-            WSO2_WK_MEMBER_PORT: 4254
+            WSO2_WK_MEMBER_PORT: 4100
             WSO2_CARBON_HOST: publisher.es-wso2.com
    container_name: es_pub2
    ports:
        - "9443"
-       - "4254"
-       - "4000"
+       - "4200"
+       - "4100"
    links:
       - db
       - es_pub1
