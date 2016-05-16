@@ -32,9 +32,9 @@
     <ServiceProvider>
       <Issuer>store</Issuer>
       <AssertionConsumerServiceURLs>
-        <AssertionConsumerServiceURL>https://localhost:9443/store/acs</AssertionConsumerServiceURL>
+        <AssertionConsumerServiceURL>https://store.es-wso2.com/store/acs</AssertionConsumerServiceURL>
       </AssertionConsumerServiceURLs>
-      <DefaultAssertionConsumerServiceURL>https://localhost:9443/store/acs</DefaultAssertionConsumerServiceURL>
+      <DefaultAssertionConsumerServiceURL>https://store.es-wso2.com/store/acs</DefaultAssertionConsumerServiceURL>
       <SignResponse>true</SignResponse>
     </ServiceProvider>
     <ServiceProvider>

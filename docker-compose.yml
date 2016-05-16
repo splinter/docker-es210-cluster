@@ -27,6 +27,8 @@ nginx:
    links:
         - es_pub1
         - es_pub2
+        - es_store1
+        - es_store2
 
 is:
   build: is
@@ -67,4 +69,39 @@ es_pub2:
    links:
       - db
       - es_pub1
+      - is
+
+es_store1:
+  build: store
+  environment:
+            WSO2_LOCAL_MEMBER_HOST: es_store1
+            WSO2_LOCAL_MEMBER_PORT: 4100
+            WSO2_WK_MEMBER_HOST: es_store2
+            WSO2_WK_MEMBER_PORT: 4200
+            WSO2_CARBON_HOST: store.es-wso2.com
+  container_name: es_store1
+  ports:
+      - "9443"
+      - "4200"
+      - "4100"
+  links:
+      - db
+      - is
+
+es_store2:
+  build: store
+  environment:
+            WSO2_LOCAL_MEMBER_HOST: es_store2
+            WSO2_LOCAL_MEMBER_PORT: 4200
+            WSO2_WK_MEMBER_HOST: es_store1
+            WSO2_WK_MEMBER_PORT: 4100
+            WSO2_CARBON_HOST: store.es-wso2.com
+  container_name: es_store2
+  ports:
+      - "9443"
+      - "4200"
+      - "4100"
+  links:
+      - db
+      - es_store1
       - is

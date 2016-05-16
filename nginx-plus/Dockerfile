@@ -28,6 +28,7 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log
 RUN ln -sf /dev/stderr /var/log/nginx/error.log
 
 COPY es.pub.conf /etc/nginx/conf.d/es.pub.conf
+COPY es.store.conf /etc/nginx/conf.d/es.store.conf
 
 # Copy the SSL certificate and key
 COPY certs/server.crt /etc/nginx/ssl/server.crt
