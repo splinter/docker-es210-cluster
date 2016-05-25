@@ -1,18 +1,18 @@
 FROM java:7
 
-ARG WSO2_ES_PACK=wso2es-2.1.0
+ARG WSO2_ES_PACK=wso2es-2.1.0-SNAPSHOT
 
 RUN apt-get update
 RUN apt-get install -y unzip
 RUN apt-get install -y vim
 RUN mkdir wso2home
 
-COPY /pack/wso2es-2.1.0.zip /wso2home
+COPY /pack/wso2es-2.1.0-SNAPSHOT.zip /wso2home
 COPY run.sh /wso2home/
 
 WORKDIR /wso2home/
-RUN unzip wso2es-2.1.0.zip
-RUN rm wso2es-2.1.0.zip
+RUN unzip wso2es-2.1.0-SNAPSHOT.zip
+RUN rm wso2es-2.1.0-SNAPSHOT.zip
 
 COPY /certs/server.crt ${WSO2_ES_PACK}/repository/resources/security/server.crt
 COPY /certs/server.key ${WSO2_ES_PACK}/repository/resources/security/server.key
