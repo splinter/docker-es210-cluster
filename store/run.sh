@@ -39,5 +39,9 @@ sed -i "s#<HostName>xxx.xxx.xx</HostName>#<HostName>$WSO2_CARBON_HOST</HostName>
 echo "Identity Provider URL  is $IS_PORT_9443_TCP_ADDR"
 sed -i "s#\"identityProviderURL\": \"https://xxx.xxx.xx/samlsso\"#\"identityProviderURL\": \"https://$IS_PORT_9443_TCP_ADDR:9443/samlsso\"#" /wso2home/wso2es-2.1.0-SNAPSHOT/repository/deployment/server/jaggeryapps/store/config/store.json
 
+#Update the registry mount url
+echo "Setting remote instance url  to $WSO2_LOCAL_MEMBER_HOST"
+sed -i "s#<remoteInstance url=\"https://localhost:9443/registry\">#<remoteInstance url=\"https://$WSO2_LOCAL_MEMBER_HOST:9443/registry\">#" /wso2home/wso2es-2.1.0-SNAPSHOT/repository/conf/registry.xml
+
 # Start the server
 sh /wso2home/wso2es-2.1.0-SNAPSHOT/bin/wso2server.sh
